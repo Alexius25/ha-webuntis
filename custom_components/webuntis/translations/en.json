@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to WebUntis",
+        "description": "Enter your WebUntis credentials.",
+        "data": {
+          "name": "Name",
+          "school": "School",
+          "username": "Username",
+          "password": "Password",
+          "base_url": "Base URL",
+          "client_identity": "Client identity",
+          "timetable_scope": "Timetable scope",
+          "class_id": "Class ID (required for class scope)",
+          "update_interval": "Update interval (minutes)"
+        }
+      },
+      "init": {
+        "title": "WebUntis options",
+        "description": "Adjust polling and timetable profile.",
+        "data": {
+          "client_identity": "Client identity",
+          "timetable_scope": "Timetable scope",
+          "class_id": "Class ID (required for class scope)",
+          "update_interval": "Update interval (minutes)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to WebUntis",
+      "invalid_auth": "Invalid authentication",
+      "invalid_timetable_config": "Class timetable scope requires a class ID",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "This account is already configured"
+    }
+  }
+}

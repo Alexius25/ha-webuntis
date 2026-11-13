@@ -1,0 +1,7 @@
+{
+  "name": "WebUntis",
+  "content_in_root": false,
+  "filename": "webuntis.zip",
+  "homeassistant": "2024.1.0",
+  "render_readme": true
+}

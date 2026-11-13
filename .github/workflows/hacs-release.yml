@@ -1,0 +1,38 @@
+name: Build HACS release zip
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create HACS ZIP package
+        run: |
+          mkdir -p dist
+          zip -r dist/webuntis.zip custom_components/webuntis \
+            -x "*.git*" \
+            -x "*.pytest_cache*" \
+            -x "*/__pycache__/*" \
+            -x "*/.DS_Store"
+
+      - name: Upload ZIP as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: webuntis-hacs-package
+          path: dist/webuntis.zip
+
+      - name: Upload ZIP to GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/webuntis.zip
